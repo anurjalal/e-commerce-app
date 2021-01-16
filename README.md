@@ -1,4 +1,4 @@
-[![Build Status](http://localhost:8080/buildStatus/icon?job=e-commerce-app&build=10)](http://localhost:8080/job/e-commerce-app/10/)
+[![Build Status](http://aefb1ba9e6be.ngrok.io/buildStatus/icon?job=e-commerce-app&build=10)](http://aefb1ba9e6be.ngrok.io/job/e-commerce-app/10/)
 
 # eCommerce Application
 
