@@ -34,6 +34,10 @@ public class OrderController {
             return ResponseEntity.notFound().build();
         }
         UserOrder order = UserOrder.createFromCart(user.getCart());
+        if (order == null || order.getItems().isEmpty()){
+            log.error("Failed to submit order, cart is empty");
+            return ResponseEntity.badRequest().build();
+        };
         orderRepository.save(order);
         log.info("Successfully submit order for username {}", username);
         return ResponseEntity.ok(order);

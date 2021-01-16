@@ -53,7 +53,7 @@ public class UserController {
 		user.setCart(cart);
 
 		if(createUserRequest.getPassword().length()<7 || !createUserRequest.getPassword().equals(createUserRequest.getConfirmPassword())){
-			log.error("Error when creating password for username {}", createUserRequest.getUsername());
+			log.error("Failed to create user, Error when creating password for username {}", createUserRequest.getUsername());
 			return ResponseEntity.badRequest().build();
 		}
 		user.setPassword(bCryptPasswordEncoder.encode(createUserRequest.getPassword()));
