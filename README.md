@@ -1,3 +1,5 @@
+[![Build Status](http://aefb1ba9e6be.ngrok.io/buildStatus/icon?job=e-commerce-app&build=10)](http://aefb1ba9e6be.ngrok.io/job/e-commerce-app/10/)
+
 # eCommerce Application
 
 In this project, you'll have an opportunity to demonstrate the security and DevOps skills that you learned in this lesson by completing an eCommerce application. You'll start with a template for the complete application, and your goal will be to take this template and add proper authentication and authorization controls so users can only access their data, and that data can only be accessed in a secure way. 
@@ -78,5 +80,3 @@ and that should, if those are valid credentials, return a 200 OK with an Authori
 
 ## Testing
 You must implement unit tests demonstrating at least 80% code coverage.
-
-#test5
