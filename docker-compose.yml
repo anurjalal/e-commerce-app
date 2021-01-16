@@ -19,7 +19,7 @@ services:
     depends_on:
       - app
     ports:
-      - "8080:80"
+      - "8082:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
   splunk:
@@ -32,14 +32,6 @@ services:
       - SPLUNK_ENABLE_LISTEN=9997
     ports:
       - "8000:8000"
-  jenkins:
-    image: jenkins/jenkins
-    restart: always
-    ports:
-      - "8081:8080"
-      - "50000:50000"
-    volumes:
-      - project_volume:/jenkins_data
   splunkforwarder:
     image: splunk/universalforwarder:6.5.3-monitor
     hostname: splunkforwarder
