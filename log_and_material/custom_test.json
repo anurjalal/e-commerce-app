@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "69ba1f8d-a3cd-463d-9fc2-df919481b79d",
+		"name": "e-commerce-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\" : \"Nurjalal\",\n    \"password\" : \"passwordpassword\",\n    \"confirmPassword\" : \"passwordpassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8082/api/user/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\" : \"Nurjalal\",\n    \"password\" : \"passwordpassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8082/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addToCart",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJOdXJqYWxhbCIsImV4cCI6MTYxMTY3MjI4MH0.fLtKMCh_9IFiiX9yque06SBCwZKDlGF1dEk3mNtlM8epQn5RyqsPLaEuIuu-tp94wdHwN9vaOBfcs5DaDUBL6g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\" : \"Nurjalal\",\n    \"itemId\" : 1,\n    \"quantity\" : 2 \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8082/api/cart/addToCart",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"cart",
+						"addToCart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "submit",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJOdXJqYWxhbCIsImV4cCI6MTYxMTY3MjI4MH0.fLtKMCh_9IFiiX9yque06SBCwZKDlGF1dEk3mNtlM8epQn5RyqsPLaEuIuu-tp94wdHwN9vaOBfcs5DaDUBL6g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/api/order/submit/Nurjalal",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"order",
+						"submit",
+						"Nurjalal"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

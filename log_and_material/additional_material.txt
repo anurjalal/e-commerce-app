@@ -1,0 +1,7 @@
+splunk
+https://www.youtube.com/watch?v=v0lHZDMfBOE
+
+jenkins
+
+https://dev.to/cuongld2/trigger-local-jobs-for-testing-in-jenkins-with-github-570a
+https://applitools.com/blog/how-to-update-jenkins-build-status-in-github-pull-requests-step-by-step-tutorial/

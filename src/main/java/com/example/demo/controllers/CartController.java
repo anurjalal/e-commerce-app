@@ -40,19 +40,19 @@ public class CartController {
 	public ResponseEntity<Cart> addTocart(@RequestBody ModifyCartRequest request) {
 		User user = userRepository.findByUsername(request.getUsername());
 		if(user == null) {
-			log.error("Exception !", new Exception("User Not Found Exception"));
+			log.error("Exception found !", new Exception("User Not Found Exception"));
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		Optional<Item> item = itemRepository.findById(request.getItemId());
 		if(!item.isPresent()) {
-			log.error("Exception !", new Exception("Item Not Found Exception"));
+			log.error("Exception found !", new Exception("Item Not Found Exception"));
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		Cart cart = user.getCart();
 		IntStream.range(0, request.getQuantity())
 			.forEach(i -> cart.addItem(item.get()));
 		cartRepository.save(cart);
-		log.info("Cart from username = {} successfully saved", user.getUsername());
+		log.info("Cart from username {} successfully saved", user.getUsername());
 		return ResponseEntity.ok(cart);
 	}
 	
@@ -60,19 +60,19 @@ public class CartController {
 	public ResponseEntity<Cart> removeFromcart(@RequestBody ModifyCartRequest request) {
 		User user = userRepository.findByUsername(request.getUsername());
 		if(user == null) {
-			log.error("Exception !", new Exception("User Not Found Exception"));
+			log.error("Exception found !", new Exception("User Not Found Exception"));
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		Optional<Item> item = itemRepository.findById(request.getItemId());
 		if(!item.isPresent()) {
-			log.error("Exception !", new Exception("Item Not Found Exception"));
+			log.error("Exception found !", new Exception("Item Not Found Exception"));
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		Cart cart = user.getCart();
 		IntStream.range(0, request.getQuantity())
 			.forEach(i -> cart.removeItem(item.get()));
 		cartRepository.save(cart);
-		log.info("Cart from username = {} successfully remove", user.getUsername());
+		log.info("Cart from username {} successfully remove", user.getUsername());
 		return ResponseEntity.ok(cart);
 	}
 		
