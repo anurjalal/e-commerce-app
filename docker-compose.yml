@@ -1,0 +1,58 @@
+version: '3'
+services:
+  app:
+    image: "e-commerce-app"
+    restart: on-failure
+    command: ["java", "-jar", "/home/e-commerce-app/target/auth-course-0.0.1-SNAPSHOT.jar"]
+    ports:
+      - "8082"
+    build:
+      context: "./"
+      dockerfile: "Dockerfile"
+    environment:
+      - LOGGING_FILE=/logs/demo-application.log
+    volumes:
+      - project_volume:/logs
+  nginx:
+    image: nginx
+    restart: always
+    depends_on:
+      - app
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+  splunk:
+    image: splunk/splunk
+    hostname: splunk
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_USER=root
+      - SPLUNK_PASSWORD=NurJ4LAl!@#
+      - SPLUNK_ENABLE_LISTEN=9997
+    ports:
+      - "8000:8000"
+  jenkins:
+    image: jenkins/jenkins
+    restart: always
+    ports:
+      - "8081:8080"
+      - "50000:50000"
+    volumes:
+      - project_volume:/jenkins_data
+  splunkforwarder:
+    image: splunk/universalforwarder:6.5.3-monitor
+    hostname: splunkforwarder
+    environment:
+      - SPLUNK_START_ARGS=--accept-license --answer-yes
+      - SPLUNK_FORWARD_SERVER=splunk:9997
+      - SPLUNK_USER=root
+      - SPLUNK_PASSWORD=NurJ4LAl!@#
+      - SPLUNK_ADD=monitor /logs
+    restart: always
+    depends_on:
+      - splunk
+    volumes:
+      - project_volume:/logs
+volumes:
+  project_volume:
